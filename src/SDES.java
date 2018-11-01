@@ -20,7 +20,16 @@ public class SDES
 
 	public void getKey10(java.util.Scanner scanner)
 	{
-		
+		key10 = new boolean[10];
+		String keyStr = scanner.nextLine();
+		for(int i = 0; i < 10; i++)
+		{
+			if (keyStr.charAt(i) == '1')
+				key10[i] = true;
+			else
+				key10[i] = false;
+		}
+		System.out.println(bitArrayToString(key10));
 	}
 	
 	public byte[] encrypt(String msg)
