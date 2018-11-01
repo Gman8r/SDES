@@ -97,7 +97,12 @@ public class SDES
 	
 	public boolean[] xor(boolean[] x, boolean[] y)
 	{
-		return null;
+		boolean[] result = new boolean[x.length];
+		for(int i = 0; i < result.length; i++)
+		{
+			result[i] = x[i] != y[i];
+		}
+		return result;
 	}
 	
 	public void show(boolean[] inp)
