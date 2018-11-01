@@ -186,7 +186,13 @@ public class SDES
 	
 	public byte[] stringToByteArray(String inp)
 	{
-		return null;
+		String[] inputs = inp.split(" ");
+		byte[] result = new byte[inputs.length];
+		for(int i = 0; i < inputs.length; i++)
+		{
+			result[i] = Byte.parseByte(inputs[i]);
+		}
+		return result;
 	}
 
 }
