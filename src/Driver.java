@@ -12,6 +12,8 @@ public class Driver
 		SDES sdes = new SDES();
 
 		Scanner scanner = new Scanner (System.in);
+		
+		sdes.getKey10(scanner);
 
 		String plain = "x";
 		System.out.println ("Enter plain text, or hit 'Enter' to terminate");
