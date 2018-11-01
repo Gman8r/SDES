@@ -29,7 +29,6 @@ public class SDES
 			else
 				key10[i] = false;
 		}
-		System.out.println(bitArrayToString(key10));
 	}
 	
 	public byte[] encrypt(String msg)
