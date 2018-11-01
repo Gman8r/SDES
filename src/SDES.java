@@ -50,7 +50,16 @@ public class SDES
 
 	public boolean[] concat (boolean[] x, boolean[] y)
 	{
-		return null;
+		boolean[] result = new boolean[x.length + y.length];
+		for(int i = 0; i < x.length; i++)
+		{
+			result[i] = x[i];
+		}
+		for(int i = 0; i < x.length; i++)
+		{
+			result[x.length + i] = y[i];
+		}
+		return result;
 	}
 
 	public boolean[] feistel(boolean[] k, boolean[] x)
