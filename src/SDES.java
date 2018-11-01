@@ -2,12 +2,12 @@
 
 public class SDES
 {
-	final byte[] INITIAL_PERM = {1, 5, 2, 0, 3, 7, 4, 6};
-	final byte[] INITIAL_PERM_INV = {3, 0, 2, 4, 6, 1, 7, 5};	//Double check this one
-	final byte[] K1_PERM = {0, 6, 8, 3, 7, 2, 9, 5};
-	final byte[] K2_PERM = {7, 2, 5, 4, 9, 1, 8, 0};
-	final byte[] PERM_4 = {1, 3, 2, 0};
-	final byte[] EXPANSION_PERM = {1, 3, 2, 0};
+	final int[] INITIAL_PERM = {1, 5, 2, 0, 3, 7, 4, 6};
+	final int[] INITIAL_PERM_INV = {3, 0, 2, 4, 6, 1, 7, 5};	//Double check this one
+	final int[] K1_PERM = {0, 6, 8, 3, 7, 2, 9, 5};
+	final int[] K2_PERM = {7, 2, 5, 4, 9, 1, 8, 0};
+	final int[] PERM_4 = {1, 3, 2, 0};
+	final int[] EXPANSION_PERM = {3, 0, 1, 2, 1, 2, 3, 0};
 	
 	//TODO S-box data here?
 	
