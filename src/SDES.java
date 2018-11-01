@@ -75,12 +75,24 @@ public class SDES
 	
 	public boolean[] lh(boolean[] inp)
 	{
-		return null;
+		int outputLength = inp.length / 2;
+		boolean[] output = new boolean[outputLength];
+		for(int i = 0; i < outputLength; i++)
+		{
+			output[i] = inp[i];
+		}
+		return output;
 	}
 	
 	public boolean[] rh(boolean[] inp)
 	{
-		return null;
+		int outputLength = inp.length / 2;
+		boolean[] output = new boolean[outputLength];
+		for(int i = 0; i < outputLength; i++)
+		{
+			output[i] = inp[i + outputLength];
+		}
+		return output;
 	}
 	
 	public boolean[] xor(boolean[] x, boolean[] y)
