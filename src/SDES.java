@@ -11,7 +11,7 @@ public class SDES
 	
 	//TODO S-box data here?
 	
-	private byte[] key10;
+	private boolean[] key10;
 	
 	public SDES()
 	{
