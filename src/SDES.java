@@ -25,7 +25,7 @@ public class SDES
 	
 	public byte[] encrypt(String msg)
 	{
-		return encrypt(stringToByteArrary(msg));	//Overload for encrypt(byte[])
+		return encrypt(stringToByteArray(msg));	//Overload for encrypt(byte[])
 	}
 	
 	byte[] encrypt(byte[] msg)
