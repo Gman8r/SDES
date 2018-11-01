@@ -110,7 +110,22 @@ public class SDES
 
 	public String byteArrayToString(byte[] inp)
 	{
-		return null;
+		String str = "";
+		for(int i = 0; i < inp.length; i++)
+		{
+			str += Byte.toString(inp[i]) + " ";
+		}
+		return str.trim();
+	}
+	
+	public String bitArrayToString(boolean[] inp)
+	{
+		String str = "";
+		for(int i = 0; i < inp.length; i++)
+		{
+			str += inp[i] ? "1" : "0";
+		}
+		return str;
 	}
 	
 	public byte[] stringToByteArrary(String inp)
