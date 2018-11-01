@@ -65,7 +65,12 @@ public class SDES
 
 	public boolean[] expPerm(boolean[] input, int[] epv)
 	{
-		return null;
+		boolean[] returnArray = new boolean[epv.length];
+		for(int i = 0; i < returnArray.length; i++)
+		{
+			returnArray[i] = input[epv[i]];
+		}
+		return returnArray;
 	}
 	
 	public boolean[] lh(boolean[] inp)
