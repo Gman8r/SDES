@@ -117,12 +117,33 @@ public class SDES
 
 	public byte bitArrayToByte(boolean[] inp)
 	{
-		return 0;
+		byte result = 0;
+		for(int i = 0; i < inp.length; i++)
+		{
+			if (inp[i])
+				result += (byte)Math.pow(2, (inp.length - 1) - i);
+		}
+		return result;
 	}
 
 	public boolean[] byteToBitArray(byte inp)
 	{
-		return null;
+		boolean[] result = new boolean[8];
+		if (inp < 0)
+		{
+			inp += 128;
+			result[0] = true;	
+		}
+		for(int i = 6; i >= 0; i--)
+		{
+			byte power = (byte)Math.pow(2, i);
+			if (inp >= power)
+			{
+				inp -= power;
+				result[7 - i] = true;
+			}
+		}
+		return result;
 	}
 
 	public String byteArrayToString(byte[] inp)
