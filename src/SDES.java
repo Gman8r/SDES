@@ -25,6 +25,11 @@ public class SDES
 	
 	public byte[] encrypt(String msg)
 	{
+		return encrypt(stringToByteArrary(msg));	//Overload for encrypt(byte[])
+	}
+	
+	byte[] encrypt(byte[] msg)
+	{
 		return null;
 	}
 
@@ -99,6 +104,11 @@ public class SDES
 	}
 
 	public String byteArrayToString(byte[] inp)
+	{
+		return null;
+	}
+	
+	public byte[] stringToByteArrary(String inp)
 	{
 		return null;
 	}
