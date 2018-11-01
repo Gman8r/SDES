@@ -184,7 +184,7 @@ public class SDES
 		return str;
 	}
 	
-	public byte[] stringToByteArrary(String inp)
+	public byte[] stringToByteArray(String inp)
 	{
 		return null;
 	}
