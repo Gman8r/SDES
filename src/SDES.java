@@ -1,3 +1,8 @@
+package project1;
+
+import java.util.Map;
+
+
 //Framework based on http://cs.rowan.edu/~bergmann/crypto/projects/project2/doc/
 
 public class SDES
@@ -9,7 +14,25 @@ public class SDES
 	final int[] PERM_4 = {1, 3, 2, 0};
 	final int[] EXPANSION_PERM = {3, 0, 1, 2, 1, 2, 3, 0};
 	
-	//TODO S-box data here?
+	final boolean[] s00 = {false,false};
+	final boolean[] s01 = {false,true};
+	final boolean[] s10 = {true,false};
+	final boolean[] s11 = {true,true};
+	
+	final Map<String, boolean[]> s0 = Map.ofEntries(
+			Map.entry("0000",s01),Map.entry("0001",s11),Map.entry("0010",s00),Map.entry("0011",s10),
+			Map.entry("0100",s11),Map.entry("0101",s01),Map.entry("0110",s10),Map.entry("0111",s00),
+			Map.entry("1000",s00),Map.entry("1001",s11),Map.entry("1010",s10),Map.entry("1011",s01),
+			Map.entry("1100",s01),Map.entry("1101",s11),Map.entry("1110",s11),Map.entry("1111",s10));
+	
+	final Map<String,boolean[]> s1 = Map.ofEntries(
+			Map.entry("0000",s00),Map.entry("0001",s10),Map.entry("0010",s01),Map.entry("0011",s00),
+			Map.entry("0100",s10),Map.entry("0101",s01),Map.entry("0110",s11),Map.entry("0111",s11),
+			Map.entry("1000",s11),Map.entry("1001",s10),Map.entry("1010",s00),Map.entry("1011",s01),
+			Map.entry("1100",s01),Map.entry("1101",s00),Map.entry("1110",s00),Map.entry("1111",s11));
+			
+
+	
 	
 	private boolean[] key10;
 	
@@ -55,13 +78,25 @@ public class SDES
 
 	public boolean[] feistel(boolean[] k, boolean[] x)
 	{
-		return null;
+		return expPerm(concat(sBox(lh(xor(k,expPerm(x,EXPANSION_PERM))),0),sBox(rh(xor(k,expPerm(x,EXPANSION_PERM))),0)),PERM_4);
 	}
 
 	public boolean[] f(boolean[] x, boolean[] k)
 	{
-		return null;
+		return concat(xor(lh(x),feistel(k,rh(x))),rh(x));
 	}
+	public boolean[] sBox(boolean[] x,int boxNum) 
+	{
+		if(boxNum == 0)
+		{
+			return s0.get(((Byte)bitArrayToByte(x)).toString());
+		}
+		else
+		{
+			return s1.get(((Byte)bitArrayToByte(x)).toString());
+		}
+	}
+	
 
 	public boolean[] expPerm(boolean[] input, int[] epv)
 	{
