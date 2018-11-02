@@ -30,8 +30,6 @@ public class SDES
 			Map.entry("0100",s10),Map.entry("0101",s01),Map.entry("0110",s11),Map.entry("0111",s11),
 			Map.entry("1000",s11),Map.entry("1001",s10),Map.entry("1010",s00),Map.entry("1011",s01),
 			Map.entry("1100",s01),Map.entry("1101",s00),Map.entry("1110",s00),Map.entry("1111",s11));
-			
-
 	
 	
 	private boolean[] key10;
@@ -78,7 +76,12 @@ public class SDES
 
 	public boolean[] feistel(boolean[] k, boolean[] x)
 	{
-		return expPerm(concat(sBox(lh(xor(k,expPerm(x,EXPANSION_PERM))),0),sBox(rh(xor(k,expPerm(x,EXPANSION_PERM))),0)),PERM_4);
+		boolean[] xorSave = xor(k,expPerm(x,EXPANSION_PERM));
+		
+		return expPerm(
+				concat(sBox(lh(xorSave),0),
+					   sBox(rh(xorSave),1)),
+				PERM_4);
 	}
 
 	public boolean[] f(boolean[] x, boolean[] k)
@@ -89,11 +92,11 @@ public class SDES
 	{
 		if(boxNum == 0)
 		{
-			return s0.get(((Byte)bitArrayToByte(x)).toString());
+			return s0.get((bitArrayToString(x)));
 		}
 		else
 		{
-			return s1.get(((Byte)bitArrayToByte(x)).toString());
+			return s1.get((bitArrayToString(x)));
 		}
 	}
 	
@@ -144,6 +147,11 @@ public class SDES
 	}
 	
 	public byte[] stringToByteArray(String inp)
+	{
+		return null;
+	}
+	
+	public String bitArrayToString(boolean[] inp)
 	{
 		return null;
 	}
