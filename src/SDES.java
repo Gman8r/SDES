@@ -113,9 +113,5 @@ public class SDES
 		return null;
 	}
 	
-	public String bitArrayToString(boolean[] inp)
-	{
-		return null;
-	}
 
 }
