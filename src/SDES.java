@@ -22,27 +22,58 @@ public class SDES
 	{
 		
 	}
-	
+	/**
+	 * Encrypt the given string used SDES each character produces a byte of cipher.
+	 * @return An array of bytes representing the cypher text.
+	 */
 	public byte[] encrypt(String msg)
 	{
 		return encrypt(stringToByteArray(msg));	//Overload for encrypt(byte[])
 	}
 	
-	byte[] encrypt(byte[] msg)
+	
+	/**
+	 * @author Mantas Pileckis
+	 * Encrypt the given byte array.
+	 * @param plainText An array of bytes representing the plain text.
+	 * @return An array of bytes representing the cipher text.
+	 */
+	byte[] encrypt(byte[] plainText)
 	{
 		return null;
 	}
-
+	
+	
+	/**
+	 * @author Mantas Pileckis
+	 * Encrypt a single byte using SDES.
+	 * @param b Byte Single byte representing plain text byte.
+	 * @return The encrypted single byte.
+	 */
 	public byte encryptByte(byte b)
 	{
 		return 0;
 	}
-
+	
+	
+	/**
+	 * @author Mantas Pileckis
+	 * Decrypt the given byte array.
+	 * @param cipher AN array of byutes representing the cipher text.
+	 * @return An array of bytes representing the original plain text.
+	 */
 	public byte[] decrypt(byte[] cipher)
 	{
 		return null;
 	}
-
+	
+	
+	/**
+	 * @author Mantas Pileckis
+	 * Decrypt a single byte using SDES.
+	 * @param b Byte that we are decrypting.
+	 * @return Single decrypted byte.
+	 */
 	public byte decryptByte(byte b)
 	{
 		return 0;
@@ -82,12 +113,16 @@ public class SDES
 	{
 		return null;
 	}
-	
+	/**
+	 * @author Mantas Pileckis
+	 */
 	public void show(boolean[] inp)
 	{
 		
 	}
-	
+	/**
+	 * @author Mantas Pileckis
+	 */
 	public void show(byte[] byteArray)
 	{
 		
