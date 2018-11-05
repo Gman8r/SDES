@@ -1,12 +1,14 @@
 import java.util.Map;
 
-
-//Framework based on http://cs.rowan.edu/~bergmann/crypto/projects/project2/doc/
-
+/**
+ * Class for performing SDES encryption and decryption
+ * <br>Framework based on http://cs.rowan.edu/~bergmann/crypto/projects/project2/doc/
+ * @author Brian Intile, Mantas Pileckis, Matthew DeGenaro 
+ */
 public class SDES
 {
 	final int[] INITIAL_PERM = {1, 5, 2, 0, 3, 7, 4, 6};
-	final int[] INITIAL_PERM_INV = {3, 0, 2, 4, 6, 1, 7, 5};	//Double check this one
+	final int[] INITIAL_PERM_INV = {3, 0, 2, 4, 6, 1, 7, 5};
 	final int[] K1_PERM = {0, 6, 8, 3, 7, 2, 9, 5};
 	final int[] K2_PERM = {7, 2, 5, 4, 9, 1, 8, 0};
 	final int[] PERM_4 = {1, 3, 2, 0};
@@ -202,6 +204,7 @@ public class SDES
 		 * @param k			8 digit key to be used in conjuction with the xor function
 		 * @param x			4 digit boolean array input
 		 * @return			4 digit result of the feistel function
+		 * @author 			Matthew DeGenaro
 		 */
 	public boolean[] feistel(boolean[] k, boolean[] x)
 	{
@@ -289,7 +292,7 @@ public class SDES
 	/**
 	 * Get the right half of a bit array
 	 * @param inp input array
-	 * @return righ half
+	 * @return right half
 	 * @author Brian Intile
 	 */
 	public boolean[] rh(boolean[] inp)
