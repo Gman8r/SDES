@@ -331,6 +331,7 @@ public class SDES
 	 */
 	public void show(boolean[] inp)
 	{
+		//TODO Remake this to print the boolean array as 1's and 0's instead of a byte
 		System.out.println(bitArrayToByte(inp));
 
 	}
@@ -339,6 +340,7 @@ public class SDES
 	 */
 	public void show(byte[] byteArray)
 	{
+		//TODO Remake this array to display byte values now that we've change how byteArrayToString works
 		System.out.println(byteArrayToString(byteArray));
 	}
 
