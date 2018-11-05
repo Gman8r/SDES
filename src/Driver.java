@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class Driver
 {
-	public static void main()
+	public static void main(String[] args)
 	{
 		SDES sdes = new SDES();
 
