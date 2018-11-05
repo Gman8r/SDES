@@ -404,12 +404,12 @@ public class SDES
 	{
 		String str = "";
 		
-		//Append the toString function for each byte, followed by a space, and trim the final result
+		//Case each byte to a char based on its ASCII value and append it to our return string
 		for(int i = 0; i < inp.length; i++)
 		{
-			str += Byte.toString(inp[i]) + " ";
+			str += (char)inp[i];
 		}
-		return str.trim();
+		return str;
 	}
 
 	/**
