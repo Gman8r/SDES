@@ -438,14 +438,12 @@ public class SDES
 	 */
 	public byte[] stringToByteArray(String inp)
 	{
-		//Start by splitting our input by spaces
-		String[] inputs = inp.split(" ");
-		byte[] result = new byte[inputs.length];
+		byte[] result = new byte[inp.length()];
 		
 		//Parse each element from the split input into a byte and add it to our result
-		for(int i = 0; i < inputs.length; i++)
+		for(int i = 0; i < inp.length(); i++)
 		{
-			result[i] = Byte.parseByte(inputs[i]);
+			result[i] = (byte)inp.charAt(i);
 		}
 		return result;
 	}
