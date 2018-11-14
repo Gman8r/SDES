@@ -43,14 +43,13 @@ public class SDES
 	 * @param scanner input scanner
 	 * @author Brian Intile
 	 */
-	public void getKey10(java.util.Scanner scanner)
+	public void getKey10(String key)
 	{
 		key10 = new boolean[10];
-		String keyStr = scanner.nextLine();
 		for(int i = 0; i < 10; i++)
 		{
 			//Just check each digit to see if it's a "1"
-			if (keyStr.charAt(i) == '1')
+			if (key.charAt(i) == '1')
 				key10[i] = true;
 			else
 				key10[i] = false;
@@ -101,21 +100,21 @@ public class SDES
 	 */
 	public byte encryptByte(byte b)
 	{
+
 		//Transform byte b into an array of booleans
 		boolean[] bitArray = byteToBitArray(b);
 		//Generate subkey k1
 		boolean[] k1 = expPerm(key10, K1_PERM);
 		//Generate subkey k2
 		boolean[] k2 = expPerm(key10, K2_PERM);
-
 		// Initial permutation on the array of bytes
 		boolean[] IP = expPerm(bitArray, INITIAL_PERM);
-		// Round function of the SDES --> fk(x) = (L(x) xor F(K,R(x))) || R(x)
-		boolean[] fk1 = concat(xor(lh(IP), feistel(k1,rh(IP))),rh(IP));
+		// Round 1 function of the SDES --> fk(x) = (L(x) xor F(K,R(x))) || R(x)
+		boolean[] fk1 = f(IP, k1);
 		// Perform swap R(x) || L(x)
 		boolean[] swapFk1 = concat(rh(fk1), lh(fk1));
 		// Round 2 of the Round function
-		boolean[] fk2 = concat(xor(lh(swapFk1), feistel(k2,rh(swapFk1))),rh(swapFk1));
+		boolean[] fk2 = f(swapFk1, k2);
 		// Inverse Permutation to get the cipher text
 		boolean[] cipher = expPerm(fk2, INITIAL_PERM_INV);
 
@@ -150,21 +149,22 @@ public class SDES
 	 */
 	public byte decryptByte(byte b)
 	{
+		
+
 		//Transform byte b into an array of booleans
 		boolean[] arrayByte = byteToBitArray(b);
 		//Generate subkey k1
 		boolean[] k1 = expPerm(key10, K1_PERM);
 		//Generate subkey k2
 		boolean[] k2 = expPerm(key10, K2_PERM);
-
 		// Initial permutation on the array of bytes
 		boolean[] IP = expPerm(arrayByte, INITIAL_PERM);
-		// Round function of the SDES --> fk(x) = (L(x) xor F(K,R(x))) || R(x)
-		boolean[] inverseFk2 = concat(xor(lh(IP), feistel(k2,rh(IP))),rh(IP));
+		// Round 1 function of the SDES --> fk(x) = (L(x) xor F(K,R(x))) || R(x)
+		boolean[] inverseFk2 = f(IP,k2);
 		// Perform swap R(x) || L(x)
 		boolean[] swapFk2 = concat(rh(inverseFk2), lh(inverseFk2));
 		// Round 2 of the Round function
-		boolean[] fk1 = concat(xor(lh(swapFk2), feistel(k1,rh(swapFk2))),rh(swapFk2));
+		boolean[] fk1 = f(swapFk2, k1);
 		// Inverse Permutation to get the cipher text
 		boolean[] plain = expPerm(fk1, INITIAL_PERM_INV);
 		//System.out.println(bitArrayToString(plain));
@@ -327,21 +327,33 @@ public class SDES
 		return result;
 	}
 	/**
+	 * Prints Bit array as 1's and 0's
 	 * @author Mantas Pileckis
+	 * @param inp The Bit array which will be displayed as 1's and 0's
 	 */
 	public void show(boolean[] inp)
 	{
-		//TODO Remake this to print the boolean array as 1's and 0's instead of a byte
-		System.out.println(bitArrayToByte(inp));
+		String array = "";
+		for(int i = 0; i < inp.length; i++)
+		{
+			array += inp[i] ? "1" : "0";
+		}
+		
+		System.out.println(array);
 
 	}
-	/**
+	/**Prints byte array as individual bytes
 	 * @author Mantas Pileckis
+	 * @param byteArray The byte array which is going to be printed as individual bytes
 	 */
 	public void show(byte[] byteArray)
 	{
-		//TODO Remake this array to display byte values now that we've change how byteArrayToString works
-		System.out.println(byteArrayToString(byteArray));
+		String array = "";
+		for(int i = 0; i < byteArray.length; i++)
+		{
+			array += Byte.toString(byteArray[i]) + " ";
+		}
+		System.out.println(array);
 	}
 
 	/**
