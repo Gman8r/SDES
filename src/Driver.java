@@ -13,15 +13,7 @@ public class Driver
 		SDES sdes = new SDES();
 
 		Scanner scanner = new Scanner (System.in);
-		
-		
-		System.out.println ("Enter 10-bit key");
-		String key = scanner.nextLine();
-		while(key.length() != 10) {
-			System.out.println ("Enter 10-bit key!!!!!!!!!!!!!!!");
-			key = scanner.nextLine();
-		}
-		sdes.getKey10(key);
+		sdes.getKey10(scanner);
 		
 		String plain = "x";
 		System.out.println ("Enter plain text, or hit 'Enter' to terminate");
