@@ -1,3 +1,4 @@
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 /**
@@ -416,14 +417,14 @@ public class SDES
 	 */
 	public String byteArrayToString(byte[] inp)
 	{
-		String str = "";
-		
-		//Case each byte to a char based on its ASCII value and append it to our return string
-		for(int i = 0; i < inp.length; i++)
+		//Overload for encrypt(byte[])
+		try
+		{			
+			return new String(inp, "US-ASCII");
+		}
 		{
 			str += (char)inp[i];
 		}
-		return str;
 	}
 
 	/**
@@ -452,14 +453,16 @@ public class SDES
 	 */
 	public byte[] stringToByteArray(String inp)
 	{
-		byte[] result = new byte[inp.length()];
-		
-		//Parse each element from the split input into a byte and add it to our result
-		for(int i = 0; i < inp.length(); i++)
-		{
-			result[i] = (byte)inp.charAt(i);
+		//Overload for encrypt(byte[])
+		try
+		{			
+			return inp.getBytes("US-ASCII");
 		}
-		return result;
+		catch (UnsupportedEncodingException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 
