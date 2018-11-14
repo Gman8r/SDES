@@ -44,13 +44,14 @@ public class SDES
 	 * @param scanner input scanner
 	 * @author Brian Intile
 	 */
-	public void getKey10(String key)
+	public void getKey10(java.util.Scanner scanner)
 	{
 		key10 = new boolean[10];
+		String keyStr = scanner.nextLine();
 		for(int i = 0; i < 10; i++)
 		{
 			//Just check each digit to see if it's a "1"
-			if (key.charAt(i) == '1')
+			if (keyStr.charAt(i) == '1')
 				key10[i] = true;
 			else
 				key10[i] = false;
@@ -422,8 +423,10 @@ public class SDES
 		{			
 			return new String(inp, "US-ASCII");
 		}
+		catch (UnsupportedEncodingException e)
 		{
-			str += (char)inp[i];
+			e.printStackTrace();
+			return null;
 		}
 	}
 
