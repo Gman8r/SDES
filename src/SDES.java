@@ -418,7 +418,6 @@ public class SDES
 	 */
 	public String byteArrayToString(byte[] inp)
 	{
-		//Overload for encrypt(byte[])
 		try
 		{			
 			return new String(inp, "US-ASCII");
